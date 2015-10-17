@@ -1,5 +1,62 @@
 @import 'base';
+$lineColor: rgba(0, 0, 0, 0.3);
 
 .eventCard {
     text-align: center;
+    border-radius: 0.5em;
+    border: 1px solid $lineColor;
+    box-shadow: 0em 0em 0.3em $lineColor;
+    padding: 0.5em;
+    margin: 0.4em;
+
+    #title {
+        font-size: 2em;
+    }
+
+    #miscData {
+        position: relative;
+        #creator {
+            position: absolute;
+        }
+
+        #followerCount {
+            position: absolute;
+        }
+    }
+
+    hr {
+        border: none;
+        height: 0.05em;
+        margin: 1em 0em;
+        box-shadow: 0em 0em 0.2em $lineColor;
+        background-color: $lineColor;
+    }
+}
+
+.horizontalEventCard {
+    @extend .eventCard;
+    width: 20em;
+    height: 12em;
+
+    #creator {
+        left: 0em;
+        bottom: 0.1em;
+        #avatar {
+        }
+    }
+
+    #followerCount {
+        right: 0em;
+        bottom: 0.1em;
+    }
+}
+
+.verticalEventCard {
+    @extend .eventCard;
+    width: 12em;
+    height: 20em;
+
+    #creator {
+
+    }
 }

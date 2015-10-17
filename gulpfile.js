@@ -25,10 +25,10 @@ gulp.task('react', function () {
 });
 
 gulp.task('watch', function () {
-    watch('./src/js/**/*.js', function () {
+    watch('./src/js/**/**/*.js', function () {
         gulp.start('react');
     });
-    
+
     watch('./src/sass/**/*.scss', function () {
         gulp.start('sass');
     });
