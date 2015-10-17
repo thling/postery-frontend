@@ -1,62 +1,101 @@
 @import 'base';
+
 $lineColor: rgba(0, 0, 0, 0.3);
 
 .eventCard {
-    text-align: center;
-    border-radius: 0.5em;
+    border-radius: 20px;
     border: 1px solid $lineColor;
-    box-shadow: 0em 0em 0.3em $lineColor;
-    padding: 0.5em;
-    margin: 0.4em;
+    box-shadow: 0px 0px 5px $lineColor;
+    margin: 5px;
+    position: relative;
+    display: inline-block;
 
     #title {
         font-size: 2em;
+        text-align: center;
     }
 
-    #miscData {
-        position: relative;
-        #creator {
-            position: absolute;
-        }
-
-        #followerCount {
-            position: absolute;
-        }
+    #desc {
+        text-align: justify;
     }
 
     hr {
         border: none;
-        height: 0.05em;
-        margin: 1em 0em;
-        box-shadow: 0em 0em 0.2em $lineColor;
+        height: 1px;
+        margin: 5px 0px;
+        box-shadow: 0px 0px 1px $lineColor;
         background-color: $lineColor;
     }
 }
 
 .horizontalEventCard {
     @extend .eventCard;
-    width: 20em;
-    height: 12em;
+    width: 570px;
+    height: 280px;
+    padding-left: 0px;
 
-    #creator {
-        left: 0em;
-        bottom: 0.1em;
-        #avatar {
-        }
+    #posterImage, #posterImage > #poster {
+        margin: 7px 10px 7px 0px;
+        height: 250px;
+        width: 355px;
+        display: inline-block;
     }
 
-    #followerCount {
-        right: 0em;
-        bottom: 0.1em;
+    #data {
+        margin: 15px 20px 20px 10px;
+        width: 170px;
+        display: inline-block;
+        vertical-align: top;
+
+        #desc {
+            height: 150px;
+        }
+
+        #miscData {
+            display: inline-block;
+            vertical-align: baseline;
+            @import 'ProfileBadge';
+            @import 'FollowerBadge';
+
+            #followerStats {
+                margin-bottom: 10px;
+            }
+        }
     }
 }
 
 .verticalEventCard {
     @extend .eventCard;
-    width: 12em;
-    height: 20em;
+    width: 280px;
+    height: 570px;
+    padding-left: 0px;
 
-    #creator {
+    #posterImage, #posterImage > #poster {
+        margin: 0px 7px 10px 7px;
+        height: 355px;
+        width: 250px;
+        display: inline-block;
+    }
 
+    #data {
+        margin: 10px 20px 20px 20px;
+        width: 240;
+        display: inline-block;
+        vertical-align: top;
+
+        #desc {
+            height: 130px;
+        }
+
+        @import 'ProfileBadge';
+        @import 'FollowerBadge';
+
+        #profileBadge, #followerBadge {
+            display: inline-block;
+        }
+
+        #followerStats {
+            margin-left: 20px;
+        }
     }
 }

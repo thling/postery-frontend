@@ -1,10 +1,12 @@
 var React = require('react');
-var EventCard = require('./components/EventCard.react.js');
+var HorizontalEventCard = require('./components/HorizontalEventCard.react.js');
+var VerticalEventCard = require('./components/VerticalEventCard.react.js');
 
 React.render(
     <div>
-        <EventCard />
-        <EventCard />
+        <HorizontalEventCard />
+        <HorizontalEventCard />
+        <VerticalEventCard />
     </div>,
     document.getElementById('react')
 );

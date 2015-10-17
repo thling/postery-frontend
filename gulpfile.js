@@ -18,7 +18,13 @@ gulp.task('react', function () {
     var bundler = browserify(sources);
     bundler.transform(reactify);
 
+
+
     bundler.bundle()
+        .on('error', function (err) {
+            console.log(err.toString());
+            this.emit("end");
+        })
         .pipe(stream('bundle.js'))
         .pipe(gulp.dest('./dist/'));
 
