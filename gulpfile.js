@@ -1,33 +1,31 @@
 'use strict';
 
-var gulp = require('gulp');
-var watch = require('gulp-watch');
-var browserify = require('browserify');
-var reactify = require('reactify');
-var stream = require('vinyl-source-stream');
-var sass = require('gulp-sass');
+let gulp = require('gulp');
+let watch = require('gulp-watch');
+let browserify = require('browserify');
+var babelify = require('babelify');
+let es6ify = require('es6ify');
+let source = require('vinyl-source-stream');
+let sass = require('gulp-sass');
 
-gulp.task('sass', function () {
+gulp.task('sass', function() {
     gulp.src('./src/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./dist/css'));
+        .pipe(gulp.dest('./dist/css'))
 });
 
 gulp.task('react', function () {
-    var sources = './src/js/main.js';
-    var bundler = browserify(sources);
-    bundler.transform(reactify);
-
-
+    var bundler = browserify('./src/js/App.react.js');
+    bundler.transform(babelify);
+    bundler.transform(es6ify);
 
     bundler.bundle()
         .on('error', function (err) {
             console.log(err.toString());
             this.emit("end");
         })
-        .pipe(stream('bundle.js'))
+        .pipe(source('./js/bundle.js'))
         .pipe(gulp.dest('./dist/'));
-
 });
 
 gulp.task('watch', function () {
@@ -39,6 +37,5 @@ gulp.task('watch', function () {
         gulp.start('sass');
     });
 });
-
 
 gulp.task('default', [ 'watch' ]);
